@@ -24,6 +24,7 @@
 #  include st2::profile::mongodb
 #
 class st2::profile::mongodb (
+  $db_auth     = $st2::mongodb_auth,
   $db_name     = $st2::db_name,
   $db_username = $st2::db_username,
   $db_password = $st2::db_password,
@@ -59,7 +60,7 @@ class st2::profile::mongodb (
     class { '::mongodb::client': }
 
     class { '::mongodb::server':
-      auth           => true,
+      auth           => $db_auth,
       port           => $db_port,
       create_admin   => true,
       store_creds    => true,
