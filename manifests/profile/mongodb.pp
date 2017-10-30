@@ -105,10 +105,6 @@ class st2::profile::mongodb (
           tag    => 'st2::mongodb::debian',
         }
 
-        File <| title == '/var/lib/mongodb' |> {
-          recurse => true,
-          tag     => 'st2::mongodb::debian',
-        }
         Package<| tag == 'mongodb' |>
         -> File<| tag == 'st2::mongodb::debian' |>
         -> Service['mongodb']
