@@ -37,8 +37,6 @@ define st2::user(
       class { '::sudo':
         # do not purge files in /etc/sudoers.d/*
         purge               => false,
-        # the 'enable' option (for some reason) purges all /etc/sudoers.d/* files
-        enable              => false,
         # do not replace /etc/sudoers file
         config_file_replace => false,
       }
