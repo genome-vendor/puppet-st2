@@ -15,7 +15,9 @@
 #
 #  include st2::profile::nodejs
 #
-class st2::profile::nodejs {
+class st2::profile::nodejs (
+  $repo_url_suffix = '4.x',
+) {
   if $::osfamily == 'RedHat' {
     # Red Hat 7.x + already have NodeJS 6.x+ installed
     # trying to install from nodesource repos fails, so just use the builtin
@@ -34,15 +36,15 @@ class st2::profile::nodejs {
     # to avoid their verification checks (ugh...).
     else {
       class { '::nodejs':
-        repo_url_suffix => '4.x',
         repo_class      => 'nodejs::repo::nodesource',
+        repo_url_suffix => $repo_url_suffix,
       }
     }
   }
   else {
     # else install nodejs 4.x from nodesource repo
     class { '::nodejs':
-      repo_url_suffix => '4.x',
+      repo_url_suffix => $repo_url_suffix,
     }
   }
 }
