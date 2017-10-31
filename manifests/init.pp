@@ -106,6 +106,7 @@ class st2(
   $db_password              = undef,
   $mongodb_version          = undef,
   $mongodb_manage_repo      = true,
+  $mongodb_auth             = true,
   $ng_init                  = true,
   $datastore_keys_dir       = $::st2::params::datstore_keys_dir,
   $datastore_key_path       = "${::st2::params::datstore_keys_dir}/datastore_key.json",
